@@ -8,9 +8,11 @@ Run the program
        $ git clone https://github.com/catchwhale/squid-ubuntu
 3. Browse the checkout files i.e 
        $ cd ~/Download/squid_ubuntu
-4. Run the command
-       $ ./script.py   IF USING ADMIN PASSWORD
-       $ ./script.py -w     IF WITHOUT SPECIFYING PASSWORD
+4. Run any of the ff command
+       $ ./script.py <USERNAME> <PASSWORD> <PORT>       IF USING ADMIN PASSWORD
+       $ ./script.py <USERNAME> <PASSWORD>              IF USING ADMIN PASSWORD WITH DEFAULT PORT NUMBER 3128
+       $ ./script.py <USERNAME> <PASSWORD> <PORT> -w    IF WITHOUT SPECIFYING PASSWORD
+       $ ./script.py <USERNAME> <PASSWORD> -w           IF WITHOUT SPECIFYING PASSWORD WITH DEFAULT PORT NUMBER 3128
 5. When using OS with ADMINISTRATIVE PASSWORD, 
       supply it and hit enter button to proceed
 6. When asking for new user and password provide it

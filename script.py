@@ -18,6 +18,9 @@ def write_to_file(filename, text):
 
 squidconf = "/etc/squid3/squid.conf"
 arg = ""
+adduser = ""
+pwd = ""
+proxy = '3128'
 if len(sys.argv) == 5:
 	arg = sys.argv[-1].strip()
 	if arg == '-p':
@@ -41,7 +44,8 @@ elif len(sys.argv) == 3:
 	proxy = '3128'
 	if pwd == '-w':
 		pwd = ""
-
+print adduser, pwd, proxy, arg
+sys.exit()
 dir_="/etc/squid3"
 squid = "squid.conf"
 log = "Log.log"
@@ -57,7 +61,7 @@ for i in ip_:
 if not ips:
 	sys.exit('No valid ips found.')
 else: pass
-proxy = '3128'
+
 quit = False
 arg = ""
 # try:
@@ -127,48 +131,50 @@ if os.path.isfile(file_):
 else: sys.exit('File %s does not exists!' % file_);
 
 user = os.popen('whoami').read().strip(); #get the current user
-list_of_users = []; # initializing list
+# list_of_users = []; # initializing list
 adduser = ""
 pwd = ""
 curr_dir = os.getcwd().strip()
 
 if arg == '-w':
-	# admin_passwd = getpass.getpass(prompt='Enter your administrative password: ').strip()
-	admin_passwd = sys.argv[2].strip()
-else:
+# 	# admin_passwd = getpass.getpass(prompt='Enter your administrative password: ').strip()
+# 	admin_passwd = sys.argv[2].strip()
+# else:
 	admin_passwd = ""
 
-if user != 'root' and admin_passwd:
-	test_login=os.popen("./.myssh.exp %s" % admin_passwd).read()
-	if not re.search('Welcome', test_login):
-		sys.exit('Invalid password!')
-	else: pass
-else: pass
+# if user != 'root' and admin_passwd:
+# 	test_login=os.popen("./.myssh.exp %s" % admin_passwd).read()
+# 	if not re.search('Welcome', test_login):
+# 		sys.exit('Invalid password!')
+# 	else: pass
+# else: pass
 
-while True: # Repeat the process
+# while True: # Repeat the process
 	# adduser = raw_input("Enter your client's username: ").strip(); # asking for new username
 	# adduser = sys.argv[1].strip()
 	# pwd = getpass.getpass(prompt="Enter your Client's password: ").strip(); # asking for new password
 	# pwd = sys.argv[2].strip()
-	if ( not adduser or not pwd or re.search(" ", adduser) or re.search(" ", pwd)): # test if user and or password is not empty
-		print "User and or password should not be empty or not contains with space."; # display an error
-	else:
-		nclient = [ adduser, pwd ]
-		for myuser in list_of_users:
-			if adduser == myuser[0]:
-			   nclient = []
-			   print 'Client user: %s already exists!' % adduser
-			   break 
-			else:  pass
-		if nclient:
-			list_of_users.append(nclient); #insert user and password
-			break
-		else: pass
+if ( not adduser or not pwd or re.search(" ", adduser) or re.search(" ", pwd)): # test if user and or password is not empty
+	sys.exit("User and or password should not be empty or not contains with space."); # display an error
+
+# else:
+# 	nclient = [ adduser, pwd ]
+	# for myuser in list_of_users:
+	# 	if adduser == myuser[0]:
+	# 		nclient = []
+	# 		print 'Client user: %s already exists!' % adduser
+	# 		   # break 
+	# 	else:  pass
+	# if nclient:
+	# 	list_of_users.append(nclient); #insert user and password
+	# 		# break
+	# else: pass
 
 if admin_passwd:	
 	os.system("./.runexpect.exp %s %s %s" % (adduser, pwd, admin_passwd)); #install spi
 else:
 	os.system("./.runexpect2.exp %s %s" % (adduser, pwd)); #install spi
+# os.system("./.runexpect2.exp %s %s" % (adduser, pwd)); #install spi
 for i in commands.split('\n'): # split commands
 	if admin_passwd:
 		outp=os.popen("./.command.exp %s %s" % (admin_passwd, i)).read()

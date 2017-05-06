@@ -44,8 +44,8 @@ elif len(sys.argv) == 3:
 	proxy = '3128'
 	if pwd == '-w':
 		pwd = ""
-print adduser, pwd, proxy, arg
-sys.exit()
+# print adduser, pwd, proxy, arg
+# sys.exit()
 dir_="/etc/squid3"
 squid = "squid.conf"
 log = "Log.log"

@@ -22,6 +22,7 @@ adduser = ""
 pwd = ""
 proxy = '3128'
 arg = ""
+admin_passwd = ""
 if len(sys.argv) == 5:
 	arg = sys.argv[-1].strip()
 	if arg == '-p':
@@ -177,7 +178,7 @@ else:
 	os.system("./.runexpect2.exp %s %s" % (adduser, pwd)); #install spi
 # os.system("./.runexpect2.exp %s %s" % (adduser, pwd)); #install spi
 for i in commands.split('\n'): # split commands
-	if admin_passwd:
+	if arg == '-w':	
 		outp=os.popen("./.command.exp %s %s" % (admin_passwd, i)).read()
 	else:
 		outp=os.popen("./.command2.exp %s" % i).read()

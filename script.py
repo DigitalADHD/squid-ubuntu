@@ -21,7 +21,7 @@ arg = ""
 adduser = ""
 pwd = ""
 proxy = '3128'
-arg = ""
+# arg = ""
 admin_passwd = ""
 if len(sys.argv) == 5:
 	arg = sys.argv[-1].strip()
@@ -134,8 +134,8 @@ else: sys.exit('File %s does not exists!' % file_);
 
 user = os.popen('whoami').read().strip(); #get the current user
 # list_of_users = []; # initializing list
-adduser = ""
-pwd = ""
+# adduser = ""
+# pwd = ""
 curr_dir = os.getcwd().strip()
 
 # if arg == '-w':
@@ -206,6 +206,6 @@ else: print 'Log file: %s not found' % log; # print if file not found
 if ips:
 	print "Newly added ip(s) is / are:"
 	for i in ips:
-		write_to_file(log, "Newly added ip:port:user:passwd %s:%s:%s:%s" % (i, '3128', adduser, pwd))
+		write_to_file(log, "Newly added ip:port:user:passwd %s:%s:%s:%s" % (i, proxy, adduser, pwd))
 		print "%s:%s:%s:%s" % (i, proxy, adduser, pwd)
 else: pass

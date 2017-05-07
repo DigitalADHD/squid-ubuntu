@@ -154,8 +154,8 @@ if arg == '-w':
 	# adduser = sys.argv[1].strip()
 	# pwd = getpass.getpass(prompt="Enter your Client's password: ").strip(); # asking for new password
 	# pwd = sys.argv[2].strip()
-if ( not adduser or not pwd or re.search(" ", adduser) or re.search(" ", pwd)): # test if user and or password is not empty
-	sys.exit("User and or password should not be empty or not contains with space."); # display an error
+# if ( not adduser or not pwd or re.search(" ", adduser) or re.search(" ", pwd)): # test if user and or password is not empty
+# 	sys.exit("User and or password should not be empty or not contains with space."); # display an error
 
 # else:
 # 	nclient = [ adduser, pwd ]

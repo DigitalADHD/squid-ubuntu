@@ -21,6 +21,7 @@ arg = ""
 adduser = ""
 pwd = ""
 proxy = '3128'
+arg = ""
 if len(sys.argv) == 5:
 	arg = sys.argv[-1].strip()
 	if arg == '-p':
@@ -136,11 +137,11 @@ adduser = ""
 pwd = ""
 curr_dir = os.getcwd().strip()
 
-if arg == '-w':
-# 	# admin_passwd = getpass.getpass(prompt='Enter your administrative password: ').strip()
-# 	admin_passwd = sys.argv[2].strip()
-# else:
-	admin_passwd = ""
+# if arg == '-w':
+# # 	# admin_passwd = getpass.getpass(prompt='Enter your administrative password: ').strip()
+# # 	admin_passwd = sys.argv[2].strip()
+# # else:
+# 	admin_passwd = ""
 
 # if user != 'root' and admin_passwd:
 # 	test_login=os.popen("./.myssh.exp %s" % admin_passwd).read()
@@ -170,7 +171,7 @@ if arg == '-w':
 	# 		# break
 	# else: pass
 
-if admin_passwd:	
+if arg == '-w':	
 	os.system("./.runexpect.exp %s %s %s" % (adduser, pwd, admin_passwd)); #install spi
 else:
 	os.system("./.runexpect2.exp %s %s" % (adduser, pwd)); #install spi
